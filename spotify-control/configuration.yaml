@@ -1,0 +1,38 @@
+## YOUR NORMAL configuration.yaml STUFF HERE ##
+alexa:
+
+## Include other files/dirs
+group: !include groups.yaml
+automation: !include_dir_merge_list automation
+script: !include_dir_merge_named scripts
+intent_script: !include_dir_merge_named intentscripts
+
+## Media Platforms
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
+
+## Spotify Input Selector
+input_select:
+  spotify_source:
+    name: Spotify Ausgabe auf
+    options:
+      - Ausgeschaltet
+      - MacBook
+      - PC Wohnzimmer
+      - FireTV Wohnzimmer
+      - Alexa Wohnzimmer
+      - Winnis iPhone
+    initial: Ausgeschaltet
+
+## Spotify Volume
+input_number:
+  spotify_volume:
+    name: Lautstärke
+    initial: 70
+    min: 0
+    max: 100
+    mode: slider
+    icon: mdi:volume-high
+    step: 1

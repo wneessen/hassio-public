@@ -1,0 +1,10 @@
+  ## Lautstaerke anpassen
+  - alias: "Spotify Lautstaerke anpassen"
+    trigger:
+      platform: state
+      entity_id: input_number.spotify_volume
+    action:
+      service: media_player.volume_set
+      data_template:
+        entity_id: media_player.spotify
+        volume_level: '{{ trigger.to_state.state | float / 100 }}'

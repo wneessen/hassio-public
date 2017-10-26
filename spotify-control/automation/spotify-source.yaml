@@ -1,0 +1,103 @@
+  ## Input selector anpassen 
+  - alias: 'Spotify wechselt auf MBP'
+    trigger:
+      platform: template
+      value_template: "{% if is_state_attr('media_player.spotify', 'source', 'wneessen-mbp') %}true{% endif %}"
+    condition:
+      condition: template
+      value_template: '{{ trigger.to_state == "true" }}'
+    action:
+      service: input_select.select_option
+      entity_id: input_select.spotify_source
+      data:
+        option: 'MacBook'
+  - alias: 'Spotify wechselt auf PC Wohnzimmer'
+    trigger:
+      platform: template
+      value_template: "{% if is_state_attr('media_player.spotify', 'source', 'LIGHTNING') %}true{% endif %}"
+    condition:
+      condition: template
+      value_template: '{{ trigger.to_state == "true" }}'
+    action:
+      service: input_select.select_option
+      entity_id: input_select.spotify_source
+      data:
+        option: 'PC Wohnzimmer'
+  - alias: 'Spotify wechselt auf FireTV Wohnzimmer'
+    trigger:
+      platform: template
+      value_template: "{% if is_state_attr('media_player.spotify', 'source', 'Amazon FireTV') %}true{% endif %}"
+    condition:
+      condition: template
+      value_template: '{{ trigger.to_state == "true" }}'
+    action:
+      service: input_select.select_option
+      entity_id: input_select.spotify_source
+      data:
+        option: 'FireTV Wohnzimmer'
+  - alias: 'Spotify wechselt auf Alexa Wohnzimmer'
+    trigger:
+      platform: template
+      value_template: "{% if is_state_attr('media_player.spotify', 'source', 'Echo WoZi') %}true{% endif %}"
+    condition:
+      condition: template
+      value_template: '{{ trigger.to_state == "true" }}'
+    action:
+      service: input_select.select_option
+      entity_id: input_select.spotify_source
+      data:
+        option: 'Alexa Wohnzimmer'
+  - alias: 'Spotify wechselt auf Winnis iPhone'
+    trigger:
+      platform: template
+      value_template: "{% if is_state_attr('media_player.spotify', 'source', \"Winni's iPhone\") %}true{% endif %}"
+    condition:
+      condition: template
+      value_template: '{{ trigger.to_state == "true" }}'
+    action:
+      service: input_select.select_option
+      entity_id: input_select.spotify_source
+      data:
+        option: 'Winnis iPhone'
+
+  ## Aktionen ausfuehren
+  - alias: "Spotify auf MacBook spielen"
+    trigger:
+      platform: state
+      entity_id: input_select.spotify_source
+      to: 'MacBook'
+    action:
+      service: script.turn_on
+      entity_id: script.spotify_mbp
+  - alias: "Spotify auf PC Wohnzimmer spielen"
+    trigger:
+      platform: state
+      entity_id: input_select.spotify_source
+      to: 'PC Wohnzimmer'
+    action:
+      service: script.turn_on
+      entity_id: script.spotify_lightning
+  - alias: "Spotify auf FireTV Wohnzimmer spielen"
+    trigger:
+      platform: state
+      entity_id: input_select.spotify_source
+      to: 'FireTV Wohnzimmer'
+    action:
+      service: script.turn_on
+      entity_id: script.spotify_firetv_wozi
+  - alias: "Spotify auf Alexa Wohnzimmer spielen"
+    trigger:
+      platform: state
+      entity_id: input_select.spotify_source
+      to: 'Alexa Wohnzimmer'
+    action:
+      service: script.turn_on
+      entity_id: script.spotify_echo_wozi
+  - alias: "Spotify auf Winnis iPhone spielen"
+    trigger:
+      platform: state
+      entity_id: input_select.spotify_source
+      to: 'Winnis iPhone'
+    action:
+      service: script.turn_on
+      entity_id: script.spotify_winnis_iphone

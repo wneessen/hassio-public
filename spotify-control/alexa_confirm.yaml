@@ -1,0 +1,10 @@
+          >
+          {{ [
+          "Alles klar",
+          "Roger Rodger",
+          "Wie Du willst, großer Meister",
+          "Zu Befehl",
+          "YOLO",
+          "Deine Mudda",
+          "Nagut",
+          ] | random }} 

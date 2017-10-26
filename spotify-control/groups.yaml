@@ -1,0 +1,6 @@
+  spotify_source:
+    name: Spotify Steuerung
+    entities:
+      - sensor.spotify_current_source
+      - input_select.spotify_source
+      - input_number.spotify_volume

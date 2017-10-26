@@ -1,0 +1,51 @@
+## Spotify Source aendern
+  spotify_mbp:
+    sequence:
+    - service: media_player.select_source
+      entity_id: media_player.spotify
+      data:
+        source: 'wneessen-mbp'
+    - delay:
+        seconds: 1
+    - service: media_player.media_play
+      entity_id: media_player.spotify
+  spotify_lightning:
+    sequence:
+    - service: media_player.select_source
+      entity_id: media_player.spotify
+      data:
+        source: 'LIGHTNING'
+    - delay:
+        seconds: 1
+    - service: media_player.media_play
+      entity_id: media_player.spotify
+  spotify_firetv_wozi:
+    sequence:
+    - service: media_player.select_source
+      entity_id: media_player.spotify
+      data:
+        source: 'Amazon FireTV'
+    - delay:
+        seconds: 1
+    - service: media_player.media_play
+      entity_id: media_player.spotify
+  spotify_echo_wozi:
+    sequence:
+    - service: media_player.select_source
+      entity_id: media_player.spotify
+      data:
+        source: 'Echo WoZi'
+    - delay:
+        seconds: 1
+    - service: media_player.media_play
+      entity_id: media_player.spotify
+  spotify_winnis_iphone:
+    sequence:
+    - service: media_player.select_source
+      entity_id: media_player.spotify
+      data:
+        source: "Winni's iPhone"
+    - delay:
+        seconds: 1
+    - service: media_player.media_play
+      entity_id: media_player.spotify

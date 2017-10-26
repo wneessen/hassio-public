@@ -1,0 +1,79 @@
+  WhatPlaysSpotifyIntent:
+    speech:
+      text: >
+        Du hörst gerade den Song {{ states.media_player.spotify.attributes.media_title }}, von {{ states.media_player.spotify.attributes.media_artist }}
+  SpotifyPauseIntent:
+    speech:
+      text: Ok. Spotify wird pausiert.
+    async_action: true
+    action:
+      service: media_player.media_pause
+      data_template:
+        entity_id: media_player.spotify
+  SpotifyPlayIntent:
+    speech:
+      text: Alles klar. Spotify wird fortgesetzt.
+    async_action: true
+    action:
+      service: media_player.media_play
+      data_template:
+        entity_id: media_player.spotify
+  SpotifyVolDownIntent:
+    speech:
+      text: Ok
+    async_action: true
+    action:
+      service: media_player.volume_down
+      data_template:
+        entity_id: media_player.spotify
+  SpotifyVolUpIntent:
+    speech:
+      text: Ok
+    async_action: true
+    action:
+      service: media_player.volume_up
+      data_template:
+        entity_id: media_player.spotify
+  SpotifySourceIntent:
+    speech:
+      text: >
+        {% if Source | lower  == 'macbook' %}
+        {% set spotify_out = 'wneessen-mbp' %}
+        {% elif Source | lower  == 'pc wohnzimmer' %}
+        {% set spotify_out = 'LIGHTNING' %}
+        {% elif Source | lower  == 'wohnzimmer' %}
+        {% set spotify_out = 'LIGHTNING' %}
+        {% elif Source | lower  == 'winnis iphone' %}
+        {% set spotify_out = "Winni's iPhone" %}
+        {% elif Source | lower  == 'firetv wohnzimmer' %}
+        {% set spotify_out = "Amazon FireTV" %}
+        {% elif Source | lower  == 'firetv' %}
+        {% set spotify_out = "Amazon FireTV" %}
+        {% elif Source | lower  == 'echo wohnzimmer' %}
+        {% set spotify_out = "Echo WoZi" %}
+        {% else %}
+        {% set spotify_out = 'invaliddevicename' %}
+        {% endif %}
+        {% if spotify_out in states.media_player.spotify.attributes.source_list %}
+        Alles klar. Schalte die Ausgabe von Spotify auf {{ Source }} um.
+        {% else %}
+        Es tut mir leid, aber {{ Source }} ist keine unterstuetzte Ausgabequelle fuer Spotify.
+        {% endif %}
+    async_action: true
+    action:
+      service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if Source | lower  == 'macbook' %}
+          script.spotify_mbp
+          {% elif Source | lower  == 'pc wohnzimmer' %}
+          script.spotify_lightning
+          {% elif Source | lower  == 'winnis iphone' %}
+          script.spotify_winnis_iphone
+          {% elif Source | lower  == 'firetv wohnzimmer' %}
+          script.spotify_firetv_wozi
+          {% elif Source | lower  == 'firetv' %}
+          script.spotify_firetv_wozi
+          {% elif Source | lower  == 'echo wohnzimmer' %}
+          script.spotify_echo_wozi
+          {% endif %}
