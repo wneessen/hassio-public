@@ -1,0 +1,28 @@
+## This is not valid YAML. You have to create a card for one sensor at a time. I've combined them in one file for convenience of sharing
+## 1st sensor:
+type: sensor
+entity: sensor.prusa3d_bed_target
+graph: line
+hours_to_show: 4
+name: Prusa i3 MK3S Bed Target Temperature
+
+## 2nd sensor:
+type: sensor
+entity: sensor.prusa3d_bed_temperature
+graph: line
+hours_to_show: 4
+name: Prusa i3 MK3S Bed Temperature
+
+## 3rd sensor:
+type: sensor
+entity: sensor.prusa3d_tool_0_target
+graph: line
+hours_to_show: 4
+name: Prusa i3 MK3S Nozzle Target Temperature
+
+## 4th sensor:
+type: sensor
+entity: sensor.prusa3d_tool_0_temperature
+graph: line
+hours_to_show: 4
+name: Prusa i3 MK3S Nozzle Temperature

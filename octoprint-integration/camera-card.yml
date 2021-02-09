@@ -1,0 +1,6 @@
+type: picture-entity
+entity: camera.prusa_i3_mk3s
+show_state: false
+show_name: false
+tap_action:
+  action: none

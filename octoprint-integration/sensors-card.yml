@@ -1,0 +1,24 @@
+type: vertical-stack
+cards:
+  - type: entities
+    entities:
+      - entity: switch.prusaocto_power ## Custom TP-Link remote power plug. Not part of the OctoPrint integration
+      - entity: light.hue_wohnzimmer_decke6_light ## Custom Philips Hue bulb. Not part of the OctoPrint integration
+      - entity: binary_sensor.octoprint_ping ## Custom ping check for the OctoPrint PI. Not part of the OctoPrint integration
+      - entity: binary_sensor.prusa3d_connected
+      - entity: sensor.prusa3d_print_status
+      - entity: sensor.prusa3d_last_event
+      - entity: sensor.prusa3d_current_z
+    title: OctoPrint Printer Status
+    state_color: true
+    show_header_toggle: false
+  - type: entities
+    entities:
+      - entity: binary_sensor.prusa3d_printing
+      - entity: sensor.prusa3d_print_file
+      - entity: sensor.prusa3d_print_progress
+      - entity: sensor.prusa3d_print_time
+      - entity: sensor.prusa3d_print_time_left
+    title: OctoPrint Print Status
+    show_header_toggle: false
+    state_color: true
